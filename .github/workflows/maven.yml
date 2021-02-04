@@ -32,4 +32,4 @@ jobs:
     - name: Check Licences
       run: mvn apache-rat:check --file pom.xml
     - name: Remove checklist eror
-      run: mvn  clean apache-rat:check -Drat.numUnapprovedLicenses=600 package -D maven.javadoc.skip=true assembly:single -Dhadoop.profile=2
+      run: mvn clean install -PallModules -Drat.numUnapprovedLicenses=200 -DskipTests
