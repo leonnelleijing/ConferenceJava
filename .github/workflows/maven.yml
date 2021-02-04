@@ -27,9 +27,10 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Sonar with Maven
       run: mvn verify sonar:sonar --file pom.xml
+    - name: Remove checklist eror
+      run: mvn clean install -PallModules -Drat.numUnapprovedLicenses=200 -DskipTests
     - name: Check Javadoc
       run: mvn javadoc:javadoc --file pom.xml
     - name: Check Licences
       run: mvn apache-rat:check --file pom.xml
-    - name: Remove checklist eror
-      run: mvn clean install -PallModules -Drat.numUnapprovedLicenses=200 -DskipTests
+
